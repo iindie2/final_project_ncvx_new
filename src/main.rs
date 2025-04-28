@@ -74,3 +74,37 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_load_and_clean_data() {
+        // Test if the data loads and cleans properly
+        let file_path = "data/final_project_data.csv"; // Adjust this path as needed
+        let clean_data = load_and_clean_data(file_path).unwrap(); // Unwrap the Result to get Vec<Record>
+
+        // Make sure data is loaded correctly
+        assert_eq!(clean_data.len(), 1000); // Replace with expected number of rows
+        assert_eq!(clean_data[0].sex, 1);   // Adjust based on your data
+    }
+
+    #[test]
+    fn test_reporting_rate_by_sex() {
+        // Test reporting rate calculation
+        let file_path = "data/final_project_data.csv";
+        let clean_data = load_and_clean_data(file_path).unwrap();
+
+        let male_reports = clean_data.iter().filter(|&record| record.sex == 1 && record.reported == 2).count();
+        let female_reports = clean_data.iter().filter(|&record| record.sex == 2 && record.reported == 2).count();
+
+        let male_report_rate = male_reports as f32 / clean_data.len() as f32 * 100.0;
+        let female_report_rate = female_reports as f32 / clean_data.len() as f32 * 100.0;
+
+        // Make sure rates are calculated correctly
+        assert!(male_report_rate > 0.0);
+        assert!(female_report_rate >= 0.0);
+    }
+
+    // Add other tests here
+}
