@@ -1,4 +1,5 @@
 Final Project: NCVS Data Analysis
+
 For my final project, I analyzed the National Crime Victimization Survey (NCVS) dataset. This dataset contains information about crimes reported by individuals in the United States. The project focuses on examining key metrics like average income, income distribution, and reporting rates by gender. By using Rust, I processed and cleaned the data to calculate these important statistics, which can provide insights into the reporting behaviors of different demographics.
 Key Features of the Project:
 Data Cleaning: The data is cleaned to remove any invalid records (such as missing or negative values). This ensures that the analysis is based on reliable information.
